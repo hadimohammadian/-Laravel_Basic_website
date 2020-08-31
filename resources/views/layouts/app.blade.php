@@ -10,7 +10,9 @@
 <body>
     @include('inc.nav')
     
-
+    @if (Request::is('/'))
+        @include('inc.showcase')
+    @endif
     <div class="container">
         <div class="row">
         <div class="col-8">
@@ -21,7 +23,6 @@
         </div>
     </div>
 </div>
-  
 
 
 </body>
