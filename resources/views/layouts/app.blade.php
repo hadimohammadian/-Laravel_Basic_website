@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    
+    @include('inc.nav')
     @yield('content')
 
    @include('inc.sidebar')
