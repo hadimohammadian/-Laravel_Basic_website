@@ -24,6 +24,11 @@
     </div>
 </div>
 
-
+  
+<footer id="footer" class="text-center">
+    <p>
+        <i class="fa fa-copyright" aria-hidden="true"> &copy 2020 Hadi</i>
+    </p>
+</footer>
 </body>
 </html>
