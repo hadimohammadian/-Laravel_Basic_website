@@ -9,9 +9,18 @@
 </head>
 <body>
     @include('inc.nav')
-    @yield('content')
+    
 
-   @include('inc.sidebar')
+    <div class="container">
+        <div class="row">
+        <div class="col-8">
+            @yield('content')
+        </div>
+        <div class="col-4">
+            @include('inc.sidebar')
+        </div>
+    </div>
+</div>
   
 
 
