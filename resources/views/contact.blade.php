@@ -4,6 +4,9 @@
 
 @section('content')
 <form method="POST" action="/contact/submit">
+
+    @csrf
+
     <div class="form-group">
       <label for="name">name</label>
       <input type="text" class="form-control" id="name" name="name" >
