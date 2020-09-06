@@ -3,7 +3,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form method="POST" action="/contact/submit" >
+<form method="POST" action="/contact/submit">
     <div class="form-group">
       <label for="name">name</label>
       <input type="text" class="form-control" id="name" name="name" >
