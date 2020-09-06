@@ -4,7 +4,7 @@
 
 @section('content')
 {{-- <form method="POST" action="/contact/submit"> --}}
-<form method="POST" action="{{Route('contact-form-submit')}}">
+<form method="POST" action="{{Route('contact-form-submit')}}" enctype="application/x-www-form-urlencoded">
 
     @csrf
 

@@ -1,8 +1,12 @@
 <?php
 
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Client\Request as ClientRequest;
+use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Support\Facades\Request as FacadesRequest;
 use Illuminate\Support\Facades\Route;
-
+use Laravel\Ui\Presets\React;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +24,7 @@ Route::get('/', function () {
 });
 
 Route::get('/about', function () {
+    
     return view('about');
     
 });
@@ -33,7 +38,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('contact/submit', function () {
-    
-    return "ok";
+Route::post('contact/submit', function (HttpRequest $request) {
+  
+    dd($request->all());
+ 
 })->name('contact-form-submit');
