@@ -6,8 +6,13 @@ use Illuminate\Http\Request;
 
 class contactController extends Controller
 {
-    public function submit(){
+    // public function submit(){
 
-        return "submit from contactController";
+    //     return "submit from contactController";
+    // }
+
+    public function submit(Request $request){
+
+        dd($request);
     }
 }
