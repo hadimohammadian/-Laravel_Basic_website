@@ -38,8 +38,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('contact/submit', function (HttpRequest $request) {
-  
-    dd($request->all());
- 
-})->name('contact-form-submit');
+Route::post('contact/submit', 'contactController@submit')->name('contact-form-submit');
