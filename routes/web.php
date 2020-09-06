@@ -36,4 +36,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('contact/submit', function () {
     
     return "ok";
-});
+})->name('contact-form-submit');

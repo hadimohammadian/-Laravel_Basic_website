@@ -3,7 +3,8 @@
 @extends('layouts.app')
 
 @section('content')
-<form method="POST" action="/contact/submit">
+{{-- <form method="POST" action="/contact/submit"> --}}
+<form method="POST" action="{{Route('contact-form-submit')}}">
 
     @csrf
 
