@@ -1,6 +1,7 @@
 
 @extends('layouts.app')
 
+@include('inc.message')
 @section('content')
     <h1>Home</h1>    
     <p>

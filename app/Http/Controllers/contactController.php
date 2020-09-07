@@ -37,7 +37,8 @@ class contactController extends Controller
             
             $message->save();
 
-            return redirect()->route('home');
+            // return redirect()->route('home');
 
+            return redirect()->route('home')->with('success', "با تشکر اطلاعات شما ثبت گردید");
     }
 }
