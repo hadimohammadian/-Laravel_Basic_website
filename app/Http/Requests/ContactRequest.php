@@ -25,7 +25,20 @@ class ContactRequest extends FormRequest
     {
         return [
             'name' => "required",
-          
+            'email' => 'required|email',
+            'subject' => 'required |min:3'
+        ];
+    }
+
+
+    public function messages()
+    {
+        return[
+            'name.required' => 'ورود نام اجباری است',
+            'email.required' => 'ورود ایمیل اجباری است',
+            'subject.required' => 'ورود موضوع اجباری است',
+            'email.email' => 'فرمت ایمیل حتما رعایت گردد',
+            'subject.min' => 'حداقل کاراکتر مجاز 3 می باشد'
         ];
     }
 }
