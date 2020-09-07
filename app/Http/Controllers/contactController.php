@@ -26,26 +26,26 @@ class contactController extends Controller
 
 
     
-    public function submit(ContactRequest $request){
+    public function submit(ContactRequest $request)
+    {
+        $message = new message();
 
-            $message = new message();
-
-            $message->name = $request->input('name');
-            $message->email = $request->input('email');
-            $message->subject = $request->input('subject');
-            $message->message = $request->input('message');
+        $message->name = $request->input('name');
+        $message->email = $request->input('email');
+        $message->subject = $request->input('subject');
+        $message->message = $request->input('message');
             
-            $message->save();
+        $message->save();
 
-            // return redirect()->route('home');
+        // return redirect()->route('home');
 
-            return redirect()->route('home')->with('success', "با تشکر اطلاعات شما ثبت گردید");
+        return redirect()->route('home')->with('success', "با تشکر اطلاعات شما ثبت گردید");
     }
 
 
-    public function getMessages(){
+    public function getMessages()
+    {
         $messages = message::all();
-        dd($messages);
-        
+        return view('messages', ['messages'=>$messages]);
     }
 }
