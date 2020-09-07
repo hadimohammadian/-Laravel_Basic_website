@@ -37,5 +37,7 @@ class contactController extends Controller
             
             $message->save();
 
+            return redirect()->route('home');
+
     }
 }
