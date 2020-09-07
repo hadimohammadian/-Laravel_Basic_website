@@ -41,4 +41,11 @@ class contactController extends Controller
 
             return redirect()->route('home')->with('success', "با تشکر اطلاعات شما ثبت گردید");
     }
+
+
+    public function getMessages(){
+        $messages = message::all();
+        dd($messages);
+        
+    }
 }

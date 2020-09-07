@@ -39,3 +39,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('contact/submit', 'contactController@submit')->name('contact-form-submit');
+
+Route::get('contact/messages', "contactController@getMessages")->name('get-messages');
