@@ -41,4 +41,14 @@ class ContactRequest extends FormRequest
             'subject.min' => 'حداقل کاراکتر مجاز 3 می باشد'
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'email' => 'نامه الکترونیکی',
+            'name' => 'نام',
+            'subject' => 'موضوع',
+            'message' => 'متن'
+        ];
+    }
 }
