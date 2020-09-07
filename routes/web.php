@@ -18,21 +18,11 @@ use Laravel\Ui\Presets\React;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-    
-});
+Route::get('/', 'pageController@getHome')->name('home');
 
-Route::get('/about', function () {
-    
-    return view('about');
-    
-});
+Route::get('/about', 'pageController@getAbout')->name('about');
 
-Route::get('/contact', function () {
-    return view('contact');
-    
-});
+Route::get('/contact', 'pageController@getContact')->name('contact');
 
 
 

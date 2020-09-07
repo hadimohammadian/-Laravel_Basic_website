@@ -4,7 +4,7 @@
     
     @foreach ($messages as $item)
 
-    <ul class="list-group p-2" >
+    <ul class="list-group p-2 " >
         <li class="list-group-item">
                 {{$item->name}}
         </li>
