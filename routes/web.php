@@ -33,7 +33,7 @@ Route::prefix('admin')->group(function(){
 
     Route::post('/articles/create', function () {
 
-        dd($_POST);
+        dd(request()->all());
     });
 
 });
