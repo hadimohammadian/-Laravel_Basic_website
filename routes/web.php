@@ -11,6 +11,8 @@
 |
 */
 
+use App\models\Article;
+
 Route::get('/', function () {
     return view('index');
 });
@@ -33,7 +35,14 @@ Route::prefix('admin')->group(function(){
 
     Route::post('/articles/create', function () {
 
-        dd(request()->all());
+        $article = new Article();
+
+        $article->title = request('title');
+        $article->slug = request('title');
+        $article->body = request('body');
+
+        $article->save();
+
     });
 
 });
