@@ -47,6 +47,7 @@ Route::prefix('admin')->group(function(){
              'body' => request('body'),
          ]);
 
+         return redirect('/admin/articles/create');
 
     });
 
