@@ -23,3 +23,18 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+
+Route::prefix('admin')->group(function(){
+
+    Route::get('/articles/create', function () {
+
+        return view('admin.articles.create');
+    });
+
+    Route::post('/articles/create', function () {
+
+        dd($_POST);
+    });
+
+});
+
