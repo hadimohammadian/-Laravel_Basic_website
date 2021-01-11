@@ -35,13 +35,18 @@ Route::prefix('admin')->group(function(){
 
     Route::post('/articles/create', function () {
 
-        $article = new Article();
+        // $article = new Article();
+        // $article->title = request('title');
+        // $article->slug = request('title');
+        // $article->body = request('body');
+        // $article->save();
 
-        $article->title = request('title');
-        $article->slug = request('title');
-        $article->body = request('body');
+         Article::create([
+             'title' => request('title'),
+             'slug' => request('title'),
+             'body' => request('body'),
+         ]);
 
-        $article->save();
 
     });
 
