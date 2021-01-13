@@ -13,6 +13,7 @@
 
 use App\models\Article;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
 
 Route::get('/', function () {
     return view('index');
@@ -41,6 +42,15 @@ Route::prefix('admin')->group(function(){
         // $article->slug = request('title');
         // $article->body = request('body');
         // $article->save();
+
+        $validator  = Validator::make(request()->all(),[
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator);
+        }
 
          Article::create([
              'title' => request('title'),

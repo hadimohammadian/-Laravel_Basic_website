@@ -1,10 +1,21 @@
 @extends('layouts.master')
 
 @section('content')
-    <h1>
-        Lorem ipsum dolor sit amet.
-    </h1>
+<div class="m-3">
+  @if($errors->any())
+    <div class="alert alert-danger">
 
+        <ul>
+            @foreach($errors->all() as $key => $error)
+                <li>
+                    {{ $error }}
+                </li>
+            @endforeach
+        </ul>
+    </div>
+
+  @endif
+</div>
     <form action="/admin/articles/create" method="post">
         @csrf
         <div class="form-group">
