@@ -75,6 +75,25 @@ Route::prefix('admin')->group(function(){
 
         $article = Article::find($id);
         return view('admin.articles.edit',compact('article'));
+    });
+
+    Route::post('/articles/{id}/edit', function ($id) {
+
+        $validator  = Validator::make(request()->all(),[
+            'title' => 'required',
+            'body' => 'required'
+        ])->validated();
+
+        $article = Article::findOrFail($id);
+
+        $article->update([
+            'title' => $validator['title'],
+            'slug' => $validator['title'],
+            'body' => $validator['body'],
+        ]);
+
+return back();
+
 
     });
 
