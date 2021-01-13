@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
+
+<h1>Create Article</h1>
 <div class="m-3">
   @if($errors->any())
     <div class="alert alert-danger">
