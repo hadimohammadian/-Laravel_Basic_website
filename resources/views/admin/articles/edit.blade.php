@@ -17,7 +17,7 @@
 
   @endif
 </div>
-    <form action="/admin/articles/create" method="post">
+    <form action="/admin/articles/{{ $article->id }}/edit" method="post">
         @csrf
         <div class="form-group">
             <label for="title">Title : </label>
