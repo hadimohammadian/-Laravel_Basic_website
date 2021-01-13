@@ -77,7 +77,7 @@ Route::prefix('admin')->group(function(){
         return view('admin.articles.edit',compact('article'));
     });
 
-    Route::post('/articles/{id}/edit', function ($id) {
+    Route::put('/articles/{id}/edit', function ($id) {
 
         $validator  = Validator::make(request()->all(),[
             'title' => 'required',

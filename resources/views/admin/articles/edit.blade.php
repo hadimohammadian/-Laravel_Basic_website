@@ -19,6 +19,7 @@
 </div>
     <form action="/admin/articles/{{ $article->id }}/edit" method="post">
         @csrf
+        @method('put')
         <div class="form-group">
             <label for="title">Title : </label>
             <input type="text" value="{{ $article->title }}" id="title" name="title" class="form-control">
