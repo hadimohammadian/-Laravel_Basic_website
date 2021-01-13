@@ -70,5 +70,13 @@ Route::prefix('admin')->group(function(){
 
     });
 
+
+    Route::get('/articles/{id}/edit' , function($id){
+
+        $article = Article::find($id);
+        return view('admin.articles.edit',compact('article'));
+
+    });
+
 });
 
