@@ -86,11 +86,13 @@ Route::prefix('admin')->group(function(){
 
         $article = Article::findOrFail($id);
 
-        $article->update([
-            'title' => $validator['title'],
-            'slug' => $validator['title'],
-            'body' => $validator['body'],
-        ]);
+        // $article->update([
+        //     'title' => $validator['title'],
+        //     'slug' => $validator['title'],
+        //     'body' => $validator['body'],
+        // ]);
+
+$article->update($validator);
 
 return back();
 
