@@ -46,17 +46,25 @@ Route::prefix('admin')->group(function(){
         $validator  = Validator::make(request()->all(),[
             'title' => 'required',
             'body' => 'required'
-        ]);
+        ])->validated();
 
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator);
-        }
+
+
+        // if($validator->fails()){
+        //     return redirect()->back()->withErrors($validator);
+        // }
+
+        //  Article::create([
+        //      'title' => request('title'),
+        //      'slug' => request('title'),
+        //      'body' => request('body'),
+        //  ]);
 
          Article::create([
-             'title' => request('title'),
-             'slug' => request('title'),
-             'body' => request('body'),
-         ]);
+            'title' => $validator['title'],
+            'slug' => $validator['title'],
+            'body' => $validator['body'],
+        ]);
 
          return redirect('/admin/articles/create');
 
