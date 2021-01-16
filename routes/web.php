@@ -13,7 +13,7 @@
 
 use App\models\Article;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Validator;
+ 
 
 use function Ramsey\Uuid\v1;
 
@@ -30,93 +30,11 @@ Route::get('/contact', function () {
 });
 
 
-Route::prefix('admin')->group(function(){
-
-    Route::get('/articles', function () {
-        $articles = Article::all();
-
-        return view('admin.articles.index',compact('articles'));
-    });
-
-    Route::get('/articles/create', function () {
-
-        return view('admin.articles.create');
-    });
-
-    Route::post('/articles/create', function () {
-
-        // $article = new Article();
-        // $article->title = request('title');
-        // $article->slug = request('title');
-        // $article->body = request('body');
-        // $article->save();
-
-        $validator  = Validator::make(request()->all(),[
-            'title' => 'required',
-            'body' => 'required'
-        ])->validated();
-
-
-
-        // if($validator->fails()){
-        //     return redirect()->back()->withErrors($validator);
-        // }
-
-        //  Article::create([
-        //      'title' => request('title'),
-        //      'slug' => request('title'),
-        //      'body' => request('body'),
-        //  ]);
-
-         Article::create([
-            'title' => $validator['title'],
-            'slug' => $validator['title'],
-            'body' => $validator['body'],
-        ]);
-
-         return redirect('/admin/articles/create');
-
-    });
-
-
-    Route::get('/articles/{id}/edit' , function($id){
-
-        $article = Article::find($id);
-        return view('admin.articles.edit',compact('article'));
-    });
-
-    Route::put('/articles/{id}/edit', function ($id) {
-
-        $validator  = Validator::make(request()->all(),[
-            'title' => 'required',
-            'body' => 'required'
-        ])->validated();
-
-        $article = Article::findOrFail($id);
-
-        // $article->update([
-        //     'title' => $validator['title'],
-        //     'slug' => $validator['title'],
-        //     'body' => $validator['body'],
-        // ]);
-
-$article->update($validator);
-
-return back();
-
-
-    });
-
-
-    Route::delete('/articles/{id}', function ($id) {
-
-        $article = Article::findOrFail($id);
-
-        $article->delete();
-
-        return back();
-
-    });
-
+Route::prefix('admin')->group(function () {
+    Route::get('/articles', 'Admin\ArticleController@index');
+    Route::get('/articles/create', 'Admin\ArticleController@create');
+    Route::post('/articles/create', 'Admin\ArticleController@insert');
+    Route::get('/articles/{id}/edit', 'Admin\ArticleController@edit');
+    Route::put('/articles/{id}/edit', 'Admin\ArticleController@update');
+    Route::delete('/articles/{id}', 'Admin\ArticleController@delete');
 });
-
