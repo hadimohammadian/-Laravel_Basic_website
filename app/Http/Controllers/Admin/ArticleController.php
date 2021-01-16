@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ArticleRequest;
 use App\models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -23,7 +24,7 @@ class ArticleController extends Controller
     }
 
 
-    public function insert()
+    public function insert(ArticleRequest $request)
     {
         // $article = new Article();
         // $article->title = request('title');
@@ -31,11 +32,7 @@ class ArticleController extends Controller
         // $article->body = request('body');
         // $article->save();
 
-        $validator  = Validator::make(request()->all(), [
-            'title' => 'required',
-            'body' => 'required'
-        ])->validated();
-
+        $validator  = $request->validate();
 
 
         // if($validator->fails()){
@@ -64,12 +61,9 @@ class ArticleController extends Controller
     }
 
 
-    public function update($id)
+    public function update($id , ArticleRequest $request)
     {
-        $validator  = Validator::make(request()->all(), [
-            'title' => 'required',
-            'body' => 'required'
-        ])->validated();
+        $validator  = $request->validate();
 
         $article = Article::findOrFail($id);
 
