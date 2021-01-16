@@ -15,6 +15,8 @@ use App\models\Article;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
 
+use function Ramsey\Uuid\v1;
+
 Route::get('/', function () {
     return view('index');
 });
@@ -29,6 +31,12 @@ Route::get('/contact', function () {
 
 
 Route::prefix('admin')->group(function(){
+
+    Route::get('/articles', function () {
+        $articles = Article::all();
+
+        return view('admin.articles.index',compact('articles'));
+    });
 
     Route::get('/articles/create', function () {
 
@@ -96,6 +104,17 @@ $article->update($validator);
 
 return back();
 
+
+    });
+
+
+    Route::delete('/articles/{id}', function ($id) {
+
+        $article = Article::findOrFail($id);
+
+        $article->delete();
+
+        return back();
 
     });
 
