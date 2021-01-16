@@ -13,7 +13,7 @@
 
 use App\models\Article;
 use Illuminate\Support\Facades\Route;
- 
+
 
 use function Ramsey\Uuid\v1;
 
@@ -34,7 +34,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/articles', 'Admin\ArticleController@index');
     Route::get('/articles/create', 'Admin\ArticleController@create');
     Route::post('/articles/create', 'Admin\ArticleController@insert');
-    Route::get('/articles/{id}/edit', 'Admin\ArticleController@edit');
-    Route::put('/articles/{id}/edit', 'Admin\ArticleController@update');
-    Route::delete('/articles/{id}', 'Admin\ArticleController@delete');
+    Route::get('/articles/{article}/edit', 'Admin\ArticleController@edit');
+    Route::put('/articles/{article}/edit', 'Admin\ArticleController@update');
+    Route::delete('/articles/{article}', 'Admin\ArticleController@delete');
 });

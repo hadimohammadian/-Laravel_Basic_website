@@ -26,24 +26,10 @@ class ArticleController extends Controller
 
     public function insert(ArticleRequest $request)
     {
-        // $article = new Article();
-        // $article->title = request('title');
-        // $article->slug = request('title');
-        // $article->body = request('body');
-        // $article->save();
+
 
         $validator  = $request->validate();
 
-
-        // if($validator->fails()){
-        //     return redirect()->back()->withErrors($validator);
-        // }
-
-        //  Article::create([
-        //      'title' => request('title'),
-        //      'slug' => request('title'),
-        //      'body' => request('body'),
-        //  ]);
 
         Article::create([
             'title' => $validator['title'],
@@ -54,34 +40,21 @@ class ArticleController extends Controller
         return redirect('/admin/articles/create');
     }
 
-    public function edit($id)
+    public function edit(Article $article)
     {
-        $article = Article::find($id);
         return view('admin.articles.edit', compact('article'));
     }
 
 
-    public function update($id , ArticleRequest $request)
+    public function update(ArticleRequest $request, Article $art)
     {
         $validator  = $request->validate();
-
-        $article = Article::findOrFail($id);
-
-        // $article->update([
-        //     'title' => $validator['title'],
-        //     'slug' => $validator['title'],
-        //     'body' => $validator['body'],
-        // ]);
-
-        $article->update($validator);
-
+        $art->update($validator);
         return back();
     }
 
-    public function delete($id)
+    public function delete(Article $article)
     {
-        $article = Article::findOrFail($id);
-
         $article->delete();
 
         return back();
